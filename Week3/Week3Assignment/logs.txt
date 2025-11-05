@@ -1,0 +1,6 @@
+2025-11-05 INFO Application started
+2025-11-05 WARN Low memory
+2025-11-05 ERROR NullPointerException occurred
+2025-11-05 INFO User logged in
+2025-11-05 ERROR ArrayIndexOutOfBoundsException
+2025-11-05 WARN Disk space low
