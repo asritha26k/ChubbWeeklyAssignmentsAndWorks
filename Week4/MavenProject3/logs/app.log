@@ -1,0 +1,44 @@
+2025-11-07 13:38:12,197 [main] INFO  LL.LoggingExample - Application started
+2025-11-07 13:38:12,200 [main] DEBUG LL.LoggingExample - This is a debug message
+2025-11-07 13:38:12,200 [main] WARN  LL.LoggingExample - This is a warning message
+2025-11-07 13:38:12,200 [main] ERROR LL.LoggingExample - This is an error message
+2025-11-07 13:38:12,200 [main] ERROR LL.LoggingExample - Caught an exception while dividing
+java.lang.ArithmeticException: / by zero
+	at LL.LoggingExample.main(LoggingExample.java:19) [classes/:?]
+2025-11-07 13:38:12,208 [main] INFO  LL.LoggingExample - Application finished
+2025-11-07 13:39:51,534 [main] INFO  LL.LoggingExample - Application started
+2025-11-07 13:39:51,536 [main] DEBUG LL.LoggingExample - This is a debug message
+2025-11-07 13:39:51,536 [main] WARN  LL.LoggingExample - This is a warning message1
+2025-11-07 13:39:51,536 [main] WARN  LL.LoggingExample - This is a warning message2
+2025-11-07 13:39:51,537 [main] WARN  LL.LoggingExample - This is a warning message3
+2025-11-07 13:39:51,537 [main] WARN  LL.LoggingExample - This is a warning message4
+2025-11-07 13:39:51,537 [main] WARN  LL.LoggingExample - This is a warning message5
+2025-11-07 13:39:51,537 [main] ERROR LL.LoggingExample - This is an error message6
+2025-11-07 13:39:51,537 [main] ERROR LL.LoggingExample - Caught an exception while dividing
+java.lang.ArithmeticException: / by zero
+	at LL.LoggingExample.main(LoggingExample.java:24) [classes/:?]
+2025-11-07 13:39:51,545 [main] INFO  LL.LoggingExample - Application finished
+2025-11-07 14:47:19,592 [main] INFO  LL.LoggingExample - Application started
+2025-11-07 14:47:19,594 [main] DEBUG LL.LoggingExample - This is a debug message
+2025-11-07 14:47:19,594 [main] WARN  LL.LoggingExample - This is a warning message1
+2025-11-07 14:47:19,594 [main] WARN  LL.LoggingExample - This is a warning message2
+2025-11-07 14:47:19,594 [main] WARN  LL.LoggingExample - This is a warning message3
+2025-11-07 14:47:19,594 [main] WARN  LL.LoggingExample - This is a warning message4
+2025-11-07 14:47:19,594 [main] WARN  LL.LoggingExample - This is a warning message5
+2025-11-07 14:47:19,594 [main] ERROR LL.LoggingExample - This is an error message6
+2025-11-07 14:47:19,594 [main] ERROR LL.LoggingExample - Caught an exception while dividing
+java.lang.ArithmeticException: / by zero
+	at LL.LoggingExample.main(LoggingExample.java:24) [classes/:?]
+2025-11-07 14:47:19,606 [main] INFO  LL.LoggingExample - Application finished
+2025-11-07 14:48:16,979 [main] INFO  LL.LoggingExample - Application started
+2025-11-07 14:48:16,981 [main] DEBUG LL.LoggingExample - This is a debug message
+2025-11-07 14:48:16,981 [main] WARN  LL.LoggingExample - This is a warning message1
+2025-11-07 14:48:16,981 [main] WARN  LL.LoggingExample - This is a warning message2
+2025-11-07 14:48:16,981 [main] WARN  LL.LoggingExample - This is a warning message3
+2025-11-07 14:48:16,981 [main] WARN  LL.LoggingExample - This is a warning message4
+2025-11-07 14:48:16,982 [main] WARN  LL.LoggingExample - This is a warning message5
+2025-11-07 14:48:16,982 [main] ERROR LL.LoggingExample - This is an error message6
+2025-11-07 14:48:16,982 [main] ERROR LL.LoggingExample - Caught an exception while dividing
+java.lang.ArithmeticException: / by zero
+	at LL.LoggingExample.main(LoggingExample.java:24) [classes/:?]
+2025-11-07 14:48:16,991 [main] INFO  LL.LoggingExample - Application finished

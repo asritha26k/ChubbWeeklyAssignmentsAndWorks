@@ -1,0 +1,11 @@
+OrderID,Product,Category,Quantity,Price,Region,Date
+1001,Laptop,Electronics,2,75000,North,2025-01-10
+1002,Smartphone,Electronics,5,25000,South,2025-01-12
+1003,Refrigerator,Home Appliances,1,40000,East,2025-02-05
+1004,Microwave,Home Appliances,3,10000,West,2025-02-10
+1005,Headphones,Electronics,10,1500,North,2025-03-01
+1006,TV,Electronics,2,55000,South,2025-03-07
+1007,Blender,Home Appliances,4,5000,East,2025-03-15
+1008,Laptop,Electronics,1,80000,West,2025-03-20
+1009,Vacuum Cleaner,Home Appliances,2,12000,North,2025-04-02
+1010,Smartwatch,Electronics,6,9000,South,2025-04-10
