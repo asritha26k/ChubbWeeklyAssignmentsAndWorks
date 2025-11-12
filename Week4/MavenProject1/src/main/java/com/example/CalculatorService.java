@@ -1,0 +1,18 @@
+package com.example;
+
+public class CalculatorService {
+
+    private MathDependency mathDependency;
+
+    public CalculatorService(MathDependency mathDependency) {
+        this.mathDependency = mathDependency;
+    }
+
+    public int performAddition(int a, int b) {
+        return mathDependency.add(a, b);
+    }
+
+    public int performSubtraction(int a, int b) {
+        return mathDependency.subtract(a, b);
+    }
+}
