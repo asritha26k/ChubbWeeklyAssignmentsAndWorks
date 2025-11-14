@@ -1,0 +1,3 @@
+2025-11-14 09:55:59,528 [main] INFO  TestLog - This is INFO log
+2025-11-14 09:55:59,529 [main] WARN  TestLog - This is WARNING
+2025-11-14 09:55:59,529 [main] ERROR TestLog - This is ERROR

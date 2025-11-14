@@ -1,0 +1,6 @@
+2025-11-14 10:00:46,785 [main] INFO  TestLog - This is INFO log
+2025-11-14 10:00:46,786 [main] WARN  TestLog - This is WARNING
+2025-11-14 10:00:46,786 [main] ERROR TestLog - This is ERROR
+2025-11-14 12:03:18,926 [main] INFO  TestLog - This is INFO log
+2025-11-14 12:03:18,926 [main] WARN  TestLog - This is WARNING
+2025-11-14 12:03:18,926 [main] ERROR TestLog - This is ERROR
