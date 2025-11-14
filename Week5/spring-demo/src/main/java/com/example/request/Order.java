@@ -8,7 +8,10 @@ public class Order {
     private float price;
     @Min(value=1)
     private int quantity;
-
+    private Address address;
+    public Address getAddress() {
+    			return address;
+    }
     public String getItem() {
         return item;
     }

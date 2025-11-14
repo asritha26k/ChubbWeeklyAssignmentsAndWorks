@@ -18,9 +18,11 @@ public class OrderController {
 		return "hello";
 	}
 	@PostMapping("/order")
-	float saveOrder(@Valid @RequestBody Order order) {
+	String saveOrder(@Valid @RequestBody Order order) {
 		float x=order.getPrice()*order.getQuantity();
-		return x;
+		String house = order.getAddress().getHouse();
+		String pin = order.getAddress().getPin();
+		return "Order saved with total price: "+x+" to be delivered at "+house+" , "+pin;
 	}
 
 }
