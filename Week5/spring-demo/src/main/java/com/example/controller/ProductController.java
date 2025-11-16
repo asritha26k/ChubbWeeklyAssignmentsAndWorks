@@ -1,29 +1,25 @@
 package com.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.example.repository.ProductRepository;
 import com.example.request.Product;
-
-import java.util.List;
+import com.example.service.ProductService;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/register")
 public class ProductController {
 
-    @Autowired
-    private ProductRepository productRepo;
+	@Autowired
+	private ProductService productService;
 
-    // Add a new product
-    @PostMapping
-    public Product addProduct(@RequestBody Product product) {
-        return productRepo.save(product);
-    }
+	// Add a new product
+	@PostMapping("/products")
+	public Product addProduct(@RequestBody Product product) {
+		return productService.register(product);
+	}
 
-    // Get all products
-    @GetMapping
-    public List<Product> getAllProducts() {
-        return (List<Product>) productRepo.findAll();
-    }
 }

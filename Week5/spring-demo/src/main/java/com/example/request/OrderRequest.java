@@ -1,15 +1,15 @@
 package com.example.request;
 
-import java.util.Set;
+import java.util.List;
 
 public class OrderRequest {
-    public String item;
-    public float price;
-    public int quantity;
+	public String item;
+	public float price;
+	public int quantity;
 
-    public String house;
-    public String pin;
+	public String house;
+	public String pin;
 
-    public int customerId;          // Many-To-One
-    public Set<Integer> productIds; // Many-To-Many
+	public int customerId;
+	public List<Integer> productIds;
 }

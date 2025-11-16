@@ -1,7 +1,8 @@
 package com.example.request;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,52 +10,50 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-    private String name;
-    private float price;
+	public int getId() {
+		return id;
+	}
 
-    @ManyToMany(mappedBy = "products")
-    @JsonIgnore // prevent infinite recursion
-    private Set<Order> orders = new HashSet<>();
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    // Getters and setters
-    public int getId() {
-        return id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public float getPrice() {
+		return price;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setPrice(float price) {
+		this.price = price;
+	}
 
-    public float getPrice() {
-        return price;
-    }
+	public List<Order> getOrders() {
+		return orders;
+	}
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
 
-    public Set<Order> getOrders() {
-        return orders;
-    }
+	private String name;
+	private float price;
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
-    }
+	@ManyToMany(mappedBy = "products")
+	@JsonIgnore
+	private List<Order> orders;
+
 }

@@ -1,11 +1,12 @@
 package com.example.service;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.repository.AddressRepository;
 import com.example.repository.CustomerRepository;
 import com.example.repository.OrderRepository;
 import com.example.repository.ProductRepository;
@@ -18,38 +19,44 @@ import com.example.request.Product;
 @Service
 public class OrderService {
 
-    @Autowired
-    private CustomerRepository customerRepo;
+	@Autowired
+	private CustomerRepository customerRepo;
 
-    @Autowired
-    private ProductRepository productRepo;
+	@Autowired
+	private ProductRepository productRepo;
 
-    @Autowired
-    private OrderRepository orderRepo;
+	@Autowired
+	private OrderRepository orderRepo;
+	@Autowired
+	AddressRepository addressRepo;
 
-    public Order saveOrder(OrderRequest req) {
+	public Order saveOrder(OrderRequest req) {
 
-        // Convert req → Order entity
-        Order order = new Order();
-        order.setItem(req.item);
-        order.setPrice(req.price);
-        order.setQuantity(req.quantity);
+		// Convert req → Order entity
+		Order order = new Order();
+		order.setItem(req.item);
+		order.setPrice(req.price);
+		order.setQuantity(req.quantity);
 
-        // Address
-        Address address = new Address();
-        address.setHouse(req.house);
-        address.setPin(req.pin);
-        order.setAddress(address);
+		// Address
+		Address address = new Address();
+		address.setHouse(req.house);
+		address.setPin(req.pin);
 
-        // Customer
-        Customer c = customerRepo.findById(req.customerId)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
-        order.setCustomer(c);
+		address = addressRepo.save(address);
 
-        Set<Product> products = new HashSet<>();
-        productRepo.findAllById(req.productIds).forEach(products::add);
-        order.setProducts(products);
+		order.setAddress(address);
 
-        return orderRepo.save(order);
-    }
+		// Customer
+		Customer c = customerRepo.findById(req.customerId)
+				.orElseThrow(() -> new RuntimeException("Customer not found"));
+
+		order.setCustomer(c);
+
+		List<Product> products = new ArrayList<>();
+		productRepo.findAllById(req.productIds).forEach(products::add);
+		order.setProducts(products);
+
+		return orderRepo.save(order);
+	}
 }
