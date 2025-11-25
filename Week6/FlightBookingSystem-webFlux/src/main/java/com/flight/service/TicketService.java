@@ -41,7 +41,6 @@ public class TicketService {
 	                          .switchIfEmpty(Mono.error(new ResourceNotFoundExceptionForResponseEntity(
 	                                  "Flight with id " + flight_id + " not found")))
 	                          .flatMap(flight -> {
-	                              // create ticket
 	                              Ticket newTicket = new Ticket();
 	                              newTicket.setFlightId(flight.getFlightId()); // FK only
 	                              newTicket.setPassengerId(passenger.getPassengerId()); // FK only
@@ -51,7 +50,6 @@ public class TicketService {
 	                              String pnr = UUID.randomUUID().toString().substring(0, 8);
 	                              newTicket.setPnr(pnr);
 
-	                              // save ticket reactively
 	                              return ticketRepo.save(newTicket)
 	                                               .map(saved -> ResponseEntity.status(HttpStatus.CREATED)
 	                                                                           .body(pnr));
@@ -78,6 +76,9 @@ public class TicketService {
 	                ticketRepo.delete(ticket)  // delete returns Mono<Void>
 	                          .then(Mono.just(ResponseEntity.ok().build()))
 	            );
+//	    we use then when we only want to run something AFTER it completes
+	    //we cant just remove then because Because map needs a value — delete returns no value.
+	    
 	}
 
 }

@@ -32,15 +32,14 @@ public class FlightService {
 	    String from = searchReq.origin;
 	    String to = searchReq.destination;
 
-	    return flightRepo.findByOriginAndDestination(from, to) // Flux<Flight>
-	                     .collectList()                        // Mono<List<Flight>>
+	    return flightRepo.findByOriginAndDestination(from, to) 
+	                     .collectList()                        
 	                     .flatMap(list -> {
 	                         if (list.isEmpty()) {
 	                             return Mono.error(new ResourceNotFoundExceptionForResponseEntity(
 	                                 "No flights found from " + from + " to " + to
 	                             ));
 	                         }
-//	                         .flatMap(list -> ...) → lets you check if (list.isEmpty()) before returning a ResponseEntity.
 	                         return Mono.just(ResponseEntity.ok(list));
 	                     });
 	}

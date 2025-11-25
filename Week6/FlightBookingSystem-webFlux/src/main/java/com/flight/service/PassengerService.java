@@ -36,7 +36,6 @@ public class PassengerService {
 	    newPassenger.setPhoneNo(req.phoneNum);
 	    newPassenger.setEmailId(req.emailId);
 
-	    // First, save passenger
 	    return passRepo.save(newPassenger)
 	            .flatMap(savedPassenger -> {
 	                Address newAddress = new Address();
@@ -45,7 +44,6 @@ public class PassengerService {
 	                newAddress.setCountry(req.country);
 	                newAddress.setState(req.state);
 
-	                // Set foreign key manually
 	                newAddress.setPassengerId(savedPassenger.getPassengerId());
 
 	                return addRepo.save(newAddress)
@@ -55,16 +53,16 @@ public class PassengerService {
 	}
 
 	public Mono<ResponseEntity<List<Ticket>>> getTickets(String emailId) {
-	    return passRepo.findByEmailId(emailId)  // Mono<Passenger>
+	    return passRepo.findByEmailId(emailId)  
 	                   .switchIfEmpty(Mono.error(
 	                       new ResourceNotFoundExceptionForResponseEntity(
 	                           "Passenger with " + emailId + " not found"
 	                       )
 	                   ))
 	                   .flatMap(passenger -> 
-	                       tickRepo.findAllByPassengerId(passenger.getPassengerId())  // Flux<Ticket>
-	                               .collectList()  // Mono<List<Ticket>>
-	                               .map(tickets -> ResponseEntity.ok(tickets)) // Mono<ResponseEntity<List<Ticket>>>
+	                       tickRepo.findAllByPassengerId(passenger.getPassengerId()) 
+	                               .collectList()  
+	                               .map(tickets -> ResponseEntity.ok(tickets)) 
 	                   );
 	}
 
