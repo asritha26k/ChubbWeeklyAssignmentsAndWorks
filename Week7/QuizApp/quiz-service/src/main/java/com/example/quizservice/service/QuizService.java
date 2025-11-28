@@ -18,6 +18,7 @@ public class QuizService {
     @Autowired
     QuizDao quizDao;
 
+    //quiz interface to communicate with question-service
     @Autowired
     QuizInterface quizInterface;
 

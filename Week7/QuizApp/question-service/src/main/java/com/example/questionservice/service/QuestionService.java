@@ -46,16 +46,15 @@ public class QuestionService {
         List<Integer> questions = questionDao.findRandomQuestionsByCategory(categoryName, numQuestions);
         return new ResponseEntity<>(questions, HttpStatus.OK);
     }
-
     public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(List<Integer> questionIds) {
+
         List<QuestionWrapper> wrappers = new ArrayList<>();
-        List<Question> questions = new ArrayList<>();
 
-        for(Integer id : questionIds){
-            questions.add(questionDao.findById(id).get());
-        }
+        for (Integer id : questionIds) {
+            Question question = questionDao.findById(id).orElse(null);
 
-        for(Question question : questions){
+            if (question == null) continue; // skip missing IDs
+
             QuestionWrapper wrapper = new QuestionWrapper();
             wrapper.setId(question.getId());
             wrapper.setQuestionTitle(question.getQuestionTitle());
@@ -63,11 +62,13 @@ public class QuestionService {
             wrapper.setOption2(question.getOption2());
             wrapper.setOption3(question.getOption3());
             wrapper.setOption4(question.getOption4());
+
             wrappers.add(wrapper);
         }
 
-        return new ResponseEntity<>(wrappers, HttpStatus.OK);
+        return ResponseEntity.ok(wrappers);
     }
+
 
     public ResponseEntity<Integer> getScore(List<Response> responses) {
 

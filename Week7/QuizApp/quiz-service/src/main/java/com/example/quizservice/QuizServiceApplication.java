@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
+//we enable feign clients in this service
 @EnableFeignClients
 public class QuizServiceApplication {
 

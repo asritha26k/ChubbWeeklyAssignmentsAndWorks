@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
+//this interface is used to communicate with question-service
 @FeignClient("QUESTION-SERVICE")
 public interface QuizInterface {
     @GetMapping("question/generate")
