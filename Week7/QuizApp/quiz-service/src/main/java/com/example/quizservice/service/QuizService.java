@@ -5,6 +5,9 @@ import com.example.quizservice.feign.QuizInterface;
 import com.example.quizservice.model.QuestionWrapper;
 import com.example.quizservice.model.Quiz;
 import com.example.quizservice.model.Response;
+
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,14 +37,19 @@ public class QuizService {
         return new ResponseEntity<>("Success", HttpStatus.CREATED);
 
     }
-
+    @CircuitBreaker(name = "questionService", fallbackMethod = "fallbackGetQuestions")
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(Integer id) {
-          Quiz quiz = quizDao.findById(id).get();
-          List<Integer> questionIds = quiz.getQuestionIds();
-          ResponseEntity<List<QuestionWrapper>> questions = quizInterface.getQuestionsFromId(questionIds);
-          return questions;
-
+        Quiz quiz = quizDao.findById(id).orElseThrow();
+        List<Integer> questionIds = quiz.getQuestionIds();
+        return quizInterface.getQuestionsFromId(questionIds);
     }
+
+    public ResponseEntity<List<QuestionWrapper>> fallbackGetQuestions(Integer id, Throwable ex) {
+        System.out.println("Question-Service DOWN — returning fallback response");
+        return new ResponseEntity<>(List.of(), HttpStatus.SERVICE_UNAVAILABLE);
+    }
+
+
 
     public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
         ResponseEntity<Integer> score = quizInterface.getScore(responses);
