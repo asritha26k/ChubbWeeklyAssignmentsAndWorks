@@ -11,29 +11,13 @@ public class FundTransfer {
 
 	public int count;//heap
 	public static void main(String[] args) throws FileNotFoundException,IOException {
-		// TODO Auto-generated method stub
+		
       System.out.println("This is test");
       
      
-      
-     // ProcessPayment obj = new ProcessPayment();
-     // ProcessPayment obj1 = new ProcessPayment();
-      
-    //  try {
-        //   int i = 5/0;
-     //      int arr[]= {};
-        //   System.out.println(arr[2]);
-	/*
-	 * File f = new File(""); FileInputStream ftr = new FileInputStream(f);
-	 * ftr.read(); FileReader fr = new FileReader(f); fr.close();
-	 */
-     // }catch(ArithmeticException ex){
+     
     	  System.out.println("Inside a catch");
-    //  }catch(Exception ex) {
-    	  
-    //	  System.out.println("IO exception" +ex.getMessage());
-    	//  ex.printStackTrace();
-    //  }
+   
      
       FundTransfer fdobj = new FundTransfer();
      
@@ -41,7 +25,7 @@ public class FundTransfer {
       
       Customer c2 = new Customer("Robin","robin@gmail.com","43432432441",50000);
       
-   //   obj.processFund(c1,c2,4000); 
+   
       
       NEFTProcessFund neftobj = new NEFTProcessFund();
       

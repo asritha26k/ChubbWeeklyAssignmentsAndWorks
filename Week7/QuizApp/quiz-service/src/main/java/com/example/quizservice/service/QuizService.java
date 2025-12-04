@@ -21,6 +21,8 @@ public class QuizService {
 
     @Autowired
     QuizDao quizDao;
+    @Autowired
+    QuizEventProducer quizEventProducer;
 
     //quiz interface to communicate with question-service
     @Autowired
@@ -59,6 +61,7 @@ public class QuizService {
     @CircuitBreaker(name="questionService",fallbackMethod="fallbackCalculateResult")
     public ResponseEntity<Integer> calculateResult(Integer id, List<Response> responses) {
         ResponseEntity<Integer> score = quizInterface.getScore(responses);
+        quizEventProducer.sendQuizCompletedEvent("Quiz completed by user. Score="+score);
         return score;
     }
     public ResponseEntity<Integer> fallbackCalculateResult(Integer id, List<Response> responses,Throwable ex) {

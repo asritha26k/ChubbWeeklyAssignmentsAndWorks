@@ -1,8 +1,13 @@
 package aboutHashMap;
 import java.util.*;
 public class EmpCom {
-public static void main(String [] args) {
+public static void main(String [] args) throws InterruptedException {
 	Scanner sc = new Scanner(System.in);
+	
+	    System.out.println("Running...");
+	    Thread.sleep(60000); // Keep alive for 60 seconds
+	
+
 	HashMap<String,ArrayList<String>> details = new HashMap<>();
 	details.put("Comp1",new ArrayList<>());
 	details.put("Comp2",new ArrayList<>());
