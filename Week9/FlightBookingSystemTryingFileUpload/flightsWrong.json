@@ -1,0 +1,27 @@
+[
+  {
+    "airline": "AirIndia",
+    "origin": "DELHI",
+    "destination": "MUMBAI",
+    "price": -5800,
+    "departureTime": "2025-01-15T10:00:00",
+    "arrivalTime": "2025-01-15T12:15:00"
+  },
+  {
+    "airline": "Indigo",
+    "origin": "",
+    "destination": "BANGALORE",
+    "price": 4200,
+    "departureTime": "2025-01-18T08:30:00",
+    "arrivalTime": "2025-01-18T09:40:00"
+  },
+{
+    "airline": "Indigo",
+    "origin": "GOA",
+    "destination": "BANGALORE",
+    "price": 4200,
+    "departureTime": "2025-01-18T08:30:00",
+    "arrivalTime": "2025-01-18T09:40:00"
+  }
+
+]

@@ -40,6 +40,13 @@ public class FlightController {
 	FlightFileService flightFileService;
 	@Autowired
 	FilesStorageService filesStorageService;
+	@Autowired
+	FlightFileService fileService;
+
+	@PostMapping("/flight-service/flight/register/uploadFile")
+	public ResponseEntity<?> upload(@RequestParam("file") MultipartFile file) {
+		return fileService.validateFlights(file);
+	}
 
 	@PostMapping("/flight-service/flight/register/upload")
 	public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
