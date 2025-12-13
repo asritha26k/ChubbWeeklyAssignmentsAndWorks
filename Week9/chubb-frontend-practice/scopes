@@ -1,0 +1,240 @@
+Below is a **clear, structured explanation of scopes in JavaScript**, with **precise code examples** suitable for training or interviews.
+
+---
+
+# **Scopes in JavaScript**
+
+**Scope** determines **where a variable is accessible** in your code.
+
+JavaScript has the following main scopes:
+
+1. Global Scope
+2. Function Scope
+3. Block Scope
+4. Lexical Scope
+5. Scope Chain
+
+---
+
+## **1. Global Scope**
+
+Variables declared **outside any function or block** are in the global scope.
+
+### **Example**
+
+```js
+let appName = "FullStackApp";
+
+function showApp() {
+  console.log(appName); // accessible
+}
+
+showApp();
+console.log(appName);   // accessible
+```
+
+**Key Point**
+
+* Global variables are accessible everywhere.
+* Overuse can cause name collisions and bugs.
+
+---
+
+## **2. Function Scope**
+
+Variables declared with `var`, `let`, or `const` **inside a function** are accessible **only within that function**.
+
+### **Example**
+
+```js
+function calculate() {
+  let result = 10 + 20;
+  console.log(result); // 30
+}
+
+calculate();
+console.log(result);   // ❌ ReferenceError
+```
+
+**Key Point**
+
+* Function scope isolates variables.
+* Helps avoid unintended side effects.
+
+---
+
+## **3. Block Scope**
+
+Introduced with `let` and `const`.
+Applies to blocks `{}` such as `if`, `for`, `while`.
+
+### **Example**
+
+```js
+if (true) {
+  let message = "Hello";
+  const count = 5;
+}
+
+console.log(message); // ❌ ReferenceError
+console.log(count);   // ❌ ReferenceError
+```
+
+### **var vs let (Block Scope)**
+
+```js
+if (true) {
+  var x = 10;
+  let y = 20;
+}
+
+console.log(x); // 10
+console.log(y); // ❌ ReferenceError
+```
+
+**Key Point**
+
+* `var` is **function-scoped**, not block-scoped.
+* Prefer `let` and `const`.
+
+---
+
+## **4. Lexical Scope**
+
+Inner functions can access variables from **outer functions**, but not vice versa.
+
+### **Example**
+
+```js
+function outer() {
+  let outerVar = "I am outside";
+
+  function inner() {
+    console.log(outerVar); // accessible
+  }
+
+  inner();
+}
+
+outer();
+```
+
+**Key Point**
+
+* Scope is determined by **where functions are written**, not called.
+
+---
+
+## **5. Scope Chain**
+
+When accessing a variable, JavaScript searches:
+
+1. Current scope
+2. Parent scope
+3. Global scope
+
+### **Example**
+
+```js
+let a = 1;
+
+function one() {
+  let b = 2;
+
+  function two() {
+    let c = 3;
+    console.log(a, b, c); // 1 2 3
+  }
+
+  two();
+}
+
+one();
+```
+
+**Key Point**
+
+* JavaScript resolves variables through the scope chain.
+* If not found → `ReferenceError`.
+
+---
+
+## **6. Temporal Dead Zone (TDZ)**
+
+Variables declared with `let` and `const` exist in a **TDZ** until initialized.
+
+### **Example**
+
+```js
+console.log(x); // ❌ ReferenceError
+let x = 10;
+```
+
+### **Valid**
+
+```js
+let y = 10;
+console.log(y); // 10
+```
+
+**Key Point**
+
+* `let` and `const` are not accessible before declaration.
+
+---
+
+## **7. Practical Interview Example**
+
+### **Question**
+
+What will this print?
+
+```js
+for (var i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+```
+
+### **Answer**
+
+```txt
+3
+3
+3
+```
+
+### **Fix using block scope**
+
+```js
+for (let i = 0; i < 3; i++) {
+  setTimeout(() => console.log(i), 1000);
+}
+```
+
+### **Output**
+
+```txt
+0
+1
+2
+```
+
+---
+
+## **Summary Table**
+
+| Scope Type  | Keyword           | Visibility             |
+| ----------- | ----------------- | ---------------------- |
+| Global      | var / let / const | Everywhere             |
+| Function    | var / let / const | Inside function        |
+| Block       | let / const       | Inside `{}`            |
+| Lexical     | —                 | Inner can access outer |
+| Scope Chain | —                 | Parent → Global        |
+
+---
+
+If you want, I can also provide:
+✔ scope **diagrams**
+✔ **closure** examples
+✔ **hoisting vs scope** comparison
+✔ **real-world React/Node examples**
