@@ -1,1 +1,32 @@
-<p>user-list works!</p>
+<p class="my-4">This is user list component</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button
+          class="btn btn-danger ms-4"
+          (click)="user.id && deleteUser(user.id)">
+          Delete
+        </button>
+      </td>
+      <td>
+        <button
+    class="btn btn-warning"
+    [routerLink]="['/edit', user.id]"
+    [disabled]="!user.id">
+    Edit
+  </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

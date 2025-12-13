@@ -1,1 +1,18 @@
-<p>user-edit works!</p>
+<p>This is user edit component!</p>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-3" style="width: 25rem;">
+    <form (ngSubmit)="addUser()">
+      <div class="form-group">
+       
+
+        <label class="m-1">Name</label>
+        <input class="form-control m-1" [(ngModel)]="user.name" name="name">
+
+        <label class="m-1">Email</label>
+        <input class="form-control m-1" [(ngModel)]="user.email" name="email">
+      </div>
+
+      <button class="btn btn-primary mt-2" type="submit">Add</button>
+    </form>
+  </div>
+</div>
